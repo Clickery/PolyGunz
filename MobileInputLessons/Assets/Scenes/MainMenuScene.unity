@@ -7244,7 +7244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19926,7 +19926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4334248379434994, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
