@@ -1,23 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
-    public GameObject mainMenu;
-    public GameObject gameMenu;
-    public GameObject gameControlMenu;
-    public GameObject optionMenu;
-    public GameObject stageMenu;
+    public GameObject mainMenuPanel;
+    public GameObject parentOptionsPanel;
+    public GameObject topLeftBackButtonPanel;
+    public GameObject parentPanel;
+    public GameObject optionPanel;
+    public GameObject levelSelectionPanel;
 
+    private void Start()
+    {
+        mainMenuPanel.SetActive(true);
+        parentOptionsPanel.SetActive(false);
+        topLeftBackButtonPanel.SetActive(false);
+        parentPanel.SetActive(false);
+        optionPanel.SetActive(false);
+        levelSelectionPanel.SetActive(false);
+    }
 
     public void StartGame()
     {
-        mainMenu.SetActive(false);
-        gameMenu.SetActive(true);
-        gameControlMenu.SetActive(true);
-        optionMenu.SetActive(false);
-        stageMenu.SetActive(false);
+        Debug.Log("Start Level 1!");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -26,30 +34,39 @@ public class ButtonScript : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowOptionMenu()
-    {
-        mainMenu.SetActive(false);
-        gameMenu.SetActive(true);
-        gameControlMenu.SetActive(false);
-        optionMenu.SetActive(true);
-        stageMenu.SetActive(false);
-    }
-
-    public void ShowStageMenu()
-    {
-        mainMenu.SetActive(false);
-        gameMenu.SetActive(true);
-        gameControlMenu.SetActive(false);
-        optionMenu.SetActive(false);
-        stageMenu.SetActive(true);
-    }
-
     public void BackToMainMenu()
     {
-        mainMenu.SetActive(true);
-        gameMenu.SetActive(false);
-        gameControlMenu.SetActive(false);
-        optionMenu.SetActive(false);
-        stageMenu.SetActive(false);
+        Debug.Log("Back MainMenu From Level");
+        SceneManager.LoadScene(0);
+    }
+
+    public void BackToMainMenuPanel()
+    {
+        mainMenuPanel.SetActive(true);
+        parentOptionsPanel.SetActive(false);
+        topLeftBackButtonPanel.SetActive(false);
+        parentPanel.SetActive(false);
+        optionPanel.SetActive(false);
+        levelSelectionPanel.SetActive(false);
+    }
+
+    public void ShowOptionMenu()
+    {
+        mainMenuPanel.SetActive(false);
+        parentOptionsPanel.SetActive(true);
+        topLeftBackButtonPanel.SetActive(true);
+        parentPanel.SetActive(true);
+        optionPanel.SetActive(true);
+        levelSelectionPanel.SetActive(false);
+    }
+
+    public void ShowStageLevels()
+    {
+        mainMenuPanel.SetActive(false);
+        parentOptionsPanel.SetActive(true);
+        topLeftBackButtonPanel.SetActive(true);
+        parentPanel.SetActive(true);
+        optionPanel.SetActive(false);
+        levelSelectionPanel.SetActive(true);
     }
 }
