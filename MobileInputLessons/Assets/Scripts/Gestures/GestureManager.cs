@@ -89,6 +89,7 @@ public class GestureManager : MonoBehaviour
 
         Directions dir;
 
+        //swiping left or right
         if(Mathf.Abs(diff.x) > Mathf.Abs(diff.y))
         {
             if(diff.x > 0)
@@ -102,6 +103,7 @@ public class GestureManager : MonoBehaviour
                 dir = Directions.LEFT;
             }
         }
+        //swiping up or down
         else
         {
             if (diff.y > 0)
@@ -171,7 +173,6 @@ public class GestureManager : MonoBehaviour
                     tapped.OnTap();
                 }
             }
-
         }
     }
 
@@ -209,7 +210,6 @@ public class GestureManager : MonoBehaviour
             {
                 FireSwipeEvent();
             }
-
 
             //commented code below is for tapping
             if (gesture_time <= _tapProperty.tap_time &&

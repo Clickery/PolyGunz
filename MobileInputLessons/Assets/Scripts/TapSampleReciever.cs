@@ -22,6 +22,7 @@ public class TapSampleReciever : MonoBehaviour
     {
         if(e.TappedObject == null)
         {
+            Debug.Log("you tapped on nothing!");
             Vector2 pos = e.TapPosition;
             Ray r = Camera.main.ScreenPointToRay(pos);
 
