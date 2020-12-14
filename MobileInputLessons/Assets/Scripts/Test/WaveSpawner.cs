@@ -40,7 +40,7 @@ public class WaveSpawner : MonoBehaviour
             if(isWaveCleared())
             {
                 //wave cleared, start new wave
-                
+                waveCompleted();
                 return;
             }
             else
