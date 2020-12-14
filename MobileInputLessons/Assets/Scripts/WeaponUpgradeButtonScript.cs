@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponUpgradeButton : MonoBehaviour
+public class WeaponUpgradeButtonScript : MonoBehaviour
 {
-    public GameObject weaponUpgradeToggle;
+    public GameObject weaponUpgradeButton;
     public GameObject weaponUpgradePanel;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        weaponUpgradeToggle.SetActive(true);
+        weaponUpgradeButton.SetActive(true);
         weaponUpgradePanel.SetActive(false);
     }
 
-    public void ShowWeaponUpgradePanel()
+    public void ToggleWeaponUpgradePanel()
     {
         if (!weaponUpgradePanel.active)
         {
