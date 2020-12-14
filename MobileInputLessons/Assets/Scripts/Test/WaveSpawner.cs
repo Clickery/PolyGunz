@@ -77,7 +77,9 @@ public class WaveSpawner : MonoBehaviour
         }
         return false;
     }
-
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    
     private void waveCompleted()
     {
         Debug.Log("Wave Completed!!");
@@ -88,7 +90,8 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             //this is where you can put upgrade scene
-            nextWave = 0;
+            //either next scene or pause
+            nextWave = 0;//change to next scene
             Debug.Log("Level Completed, Looping");
         }
         else
@@ -97,6 +100,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     IEnumerator SpawnWave(Wave _wave)
     {
