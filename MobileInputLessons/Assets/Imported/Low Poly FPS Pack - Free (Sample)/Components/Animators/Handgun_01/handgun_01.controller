@@ -46,13 +46,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Run
+  - m_Name: Aim
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Aim
+  - m_Name: Run
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -76,13 +76,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Aim Scope 3
+  - m_Name: Aim Scope 4
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Aim Scope 4
+  - m_Name: Aim Scope 3
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -394,7 +394,7 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: Draw
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -2079,7 +2079,7 @@ AnimatorStateMachine:
     m_Position: {x: -60, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110299608}
-    m_Position: {x: -130, y: 560, z: 0}
+    m_Position: {x: -170, y: 580, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110232068}
     m_Position: {x: -410, y: 420, z: 0}
@@ -2792,10 +2792,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102309449202577110}
-    m_Position: {x: 36, y: 240, z: 0}
+    m_Position: {x: 30, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102649836438461328}
-    m_Position: {x: 36, y: 336, z: 0}
+    m_Position: {x: 40, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
