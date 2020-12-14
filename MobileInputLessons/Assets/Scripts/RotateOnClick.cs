@@ -9,11 +9,11 @@ public class RotateOnClick : MonoBehaviour
 
     public void rotateToTheLeft()
     {
-        cameraGameObject.transform.Rotate(Vector3.up * rotateQuarterHalf);
+        cameraGameObject.transform.Rotate(0.0f, (-1.0f * rotateQuarterHalf), 0.0f);
     }
 
     public void rotateToTheRight()
     {
-        cameraGameObject.transform.Rotate(Vector3.down * rotateQuarterHalf);
+        cameraGameObject.transform.Rotate(0.0f, rotateQuarterHalf, 0.0f);
     }
 }
