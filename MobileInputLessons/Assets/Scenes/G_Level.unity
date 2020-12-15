@@ -1285,6 +1285,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 114352007083497230, guid: c24fed9fa91f7634fbc8e5e12405008e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c24fed9fa91f7634fbc8e5e12405008e, type: 3}
+--- !u!1 &219895263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 778649242401568538, guid: c77a0231282cd7e4b8f09f244a385a3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 777926414163161388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &224605404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3140,6 +3146,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 768929290}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &790365753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 778649241591719174, guid: c77a0231282cd7e4b8f09f244a385a3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 777926414163161388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &807021981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3455,6 +3467,13 @@ MonoBehaviour:
   playerStats: {fileID: 2031323380}
   joystick: {fileID: 1737133181}
   crossHair: {fileID: 177754521}
+  _swipeProperty:
+    MinSwipeDistance: 0.5
+    MaxGestureTime: 0.7
+  guns:
+  - {fileID: 1277907618}
+  - {fileID: 790365753}
+  - {fileID: 219895263}
 --- !u!1 &886849029
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,6 +5026,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4756262757966062, guid: 1ce022d65e1e7b84d9e5ae4a479c39ba,
     type: 3}
   m_PrefabInstance: {fileID: 1272706675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1277907618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 778649241668109907, guid: c77a0231282cd7e4b8f09f244a385a3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 777926414163161388}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1303602891
 PrefabInstance:
