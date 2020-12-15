@@ -8,6 +8,10 @@ public class EnemyBehavior : MonoBehaviour
     private Vector3 targetPos;
     public Transform finishLine;
 
+    //enemy stats
+    private int nHp;
+
+
 
     // Start is called before the first frame update
     void Start()
