@@ -48,8 +48,7 @@ public class EnemyBehavior : MonoBehaviour
     public void onGetHit()
     {
         //deduct hp for enemy
+
         Destroy(this.gameObject);
     }
-
-    
 }
