@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7606604338160162765}
-  - component: {fileID: 7606604338160162766}
+  - component: {fileID: 9152121839337189340}
   m_Layer: 0
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7606604338160162766
+--- !u!114 &9152121839337189340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80403e220673095408c1a69044c3f8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 7210657540993484828, guid: 6cf9a1df7f5d17e47ba6599e903fbce8,
-    type: 3}
-  pointsText: {fileID: 1599816629319404034, guid: 23caea914d887cd4c84fd4e6a14be9e7,
-    type: 3}
+  scoreText: {fileID: 0}
+  pointsText: {fileID: 0}
   score: 0
   points: 0
