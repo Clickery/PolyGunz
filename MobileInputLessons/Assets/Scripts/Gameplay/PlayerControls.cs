@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour
                 if (enemyHit.collider.tag == "Enemy")
                 {
                     Debug.Log("3D Hit: " + enemyHit.collider.name);
-                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit();
+                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(1);
                 }
             }
         }

@@ -10,13 +10,28 @@ public class EnemyBehavior : MonoBehaviour
     private Vector3 targetPos;
     public Transform finishLine;
 
+    public HealthBar hpBar;
+
     //enemy stats
     private int nHp;
+    public int score = 100;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //set enemy Hp
+        if(this.gameObject.name == "Boss(Clone)")
+        {
+            nHp = 20;
+        }
+        else
+        {
+            nHp = 5;
+        }
+        hpBar.setMaxHealth(nHp);
+
+        //setting destination point
         targetPos = generateTargetPos();
     }
 
@@ -46,9 +61,19 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void onGetHit()
+    public void onGetHit(int damage)
     {
         //deduct hp for enemy
-        Destroy(this.gameObject);
+
+        nHp -= damage;
+        if(nHp > 0)
+        {
+            hpBar.setHealth(nHp);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }
