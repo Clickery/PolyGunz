@@ -13,6 +13,8 @@ public class GunStatsManager : MonoBehaviour
     private int bulletCount;
     private int maxAmmo = 5;
 
+    private bool nuke = true;
+
     public Text ammoText;
 
     void Start()
@@ -37,6 +39,21 @@ public class GunStatsManager : MonoBehaviour
     {
         reloadSFX.Play();
         bulletCount = maxAmmo;
+    }
+
+    public void nukeEnemies()
+    {
+        GameObject[] currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < currentEnemies.Length - 1; i++)
+        {
+            Destroy(currentEnemies[i]);
+        }
+        nuke = false;
+    }
+
+    public bool hasNuke()
+    {
+        return nuke;
     }
 
     public int bulletsLeft()
