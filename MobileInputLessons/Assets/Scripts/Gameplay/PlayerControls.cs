@@ -8,8 +8,8 @@ public class PlayerControls : MonoBehaviour
     public Joystick joystick;
     public Transform crossHair;
     private float sensitivity = 1000.0f;
-    
 
+    private GameObject gunStatManager;
 
     //Touch purposes/////////////////////
     public SwipeProperty _swipeProperty;
@@ -38,7 +38,8 @@ public class PlayerControls : MonoBehaviour
                 guns[i].SetActive(false);
             }
         }
-        
+
+        gunStatManager = GameObject.FindGameObjectWithTag("GunStatsManager");
     }
 
 
@@ -77,7 +78,6 @@ public class PlayerControls : MonoBehaviour
             {
                 fireSwipeEvent();
             }
-
         }
     }
 
@@ -113,24 +113,30 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-
-
     public void Shoot()
     {
         Ray ray = Camera.main.ScreenPointToRay(crossHair.position);
         RaycastHit enemyHit;
-        if (Physics.Raycast(ray, out enemyHit))
+
+        int bulletsLeft = gunStatManager.GetComponent<GunStatsManager>().bulletsLeft();
+        if(bulletsLeft > 0)
         {
-            if (enemyHit.collider != null)
+            gunStatManager.GetComponent<GunStatsManager>().gunShot();//reduces ammo
+            if (Physics.Raycast(ray, out enemyHit))
             {
-                if (enemyHit.collider.tag == "Enemy")
+                if (enemyHit.collider != null && enemyHit.collider.tag == "Enemy")
                 {
-                    Debug.Log("3D Hit: " + enemyHit.collider.name);
+                    //Debug.Log("3D Hit: " + enemyHit.collider.name);
+                      
                     playerStats.GetComponent<PlayerStatsManager>().AddPoints();
                     playerStats.GetComponent<PlayerStatsManager>().AddScore();
                     enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(playerStats.GetComponent<PlayerStatsManager>().GetDamage());
                 }
             }
+        }
+        else
+        {
+            Debug.Log("Out of Ammo");
         }
     }
 }
