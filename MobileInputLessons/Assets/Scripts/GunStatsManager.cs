@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GunStatsManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Text nukeText;
+    public AudioSource nukeSFX;
     public AudioSource reloadSFX;
     public GameObject[] guns;
     private GameObject player;
@@ -27,6 +29,10 @@ public class GunStatsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!nuke)
+        {
+            nukeText.text = "x 0";
+        }
         ammoText.text = "Ammo: " + bulletCount.ToString();
     }
 
@@ -43,8 +49,9 @@ public class GunStatsManager : MonoBehaviour
 
     public void nukeEnemies()
     {
+        nukeSFX.Play();
         GameObject[] currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for(int i = 0; i < currentEnemies.Length - 1; i++)
+        for(int i = 0; i < currentEnemies.Length; i++)
         {
             Destroy(currentEnemies[i]);
         }

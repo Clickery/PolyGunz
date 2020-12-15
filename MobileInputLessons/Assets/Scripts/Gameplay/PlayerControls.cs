@@ -75,7 +75,7 @@ public class PlayerControls : MonoBehaviour
 
             if(gesture_finger1.phase == TouchPhase.Moved || gesture_finger2.phase == TouchPhase.Moved)
             {
-                Vector2 prev1 = getPrevPoint(gesture_finger2);
+                Vector2 prev1 = getPrevPoint(gesture_finger1);
                 Vector2 prev2 = getPrevPoint(gesture_finger2);
 
                 float currentDist = Vector2.Distance(gesture_finger1.position, gesture_finger2.position);
@@ -84,7 +84,7 @@ public class PlayerControls : MonoBehaviour
                 float diff = currentDist - prevDist;
                 if(Mathf.Abs(diff) >= _pinchSpread.MinChange * Screen.dpi)
                 {
-                    Debug.Log("Pinch/Spread!");
+                    Debug.Log($"Pinch/Spread! {diff}");
                     gunStatManager.GetComponent<GunStatsManager>().nukeEnemies();
                 }
             }
