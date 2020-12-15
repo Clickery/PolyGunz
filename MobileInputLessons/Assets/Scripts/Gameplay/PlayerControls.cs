@@ -12,10 +12,12 @@ public class PlayerControls : MonoBehaviour
     private GameObject gunStatManager;
 
 
+    private Touch gesture_finger1;
+    private Touch gesture_finger2;
+
     //Touch purposes/////////////////////
     public SwipeProperty _swipeProperty;
     //finger touch
-    private Touch gesture_finger1;
     private Vector2 start_pos;
     private Vector2 end_pos;
     private float gesture_time;
@@ -24,6 +26,12 @@ public class PlayerControls : MonoBehaviour
     //Shake purposes////////////////////
     private Vector3 phoneAccel;
     private float reloadTrigger = 4.0f;
+    //Shake purposes////////////////////
+
+    //Pinch/Spread purposes////////////
+    public PinchSpreadProperty _pinchSpread;
+
+
 
     public GameObject[] guns;
     private int index;
@@ -57,7 +65,28 @@ public class PlayerControls : MonoBehaviour
         //changing gun type
         if (Input.touchCount == 1)
         {
+            gesture_finger1 = Input.GetTouch(0);
             checkForSwipe();
+        }
+        else if(Input.touchCount > 1)
+        {
+            gesture_finger1 = Input.GetTouch(0);
+            gesture_finger2 = Input.GetTouch(1);
+
+            if(gesture_finger1.phase == TouchPhase.Moved || gesture_finger2.phase == TouchPhase.Moved)
+            {
+                Vector2 prev1 = getPrevPoint(gesture_finger2);
+                Vector2 prev2 = getPrevPoint(gesture_finger2);
+
+                float currentDist = Vector2.Distance(gesture_finger1.position, gesture_finger2.position);
+                float prevDist = Vector2.Distance(prev1, prev2);
+
+                float diff = currentDist - prevDist;
+                if(Mathf.Abs(diff) >= _pinchSpread.MinChange * Screen.dpi)
+                {
+                    Debug.Log("Pinch/Spread!");
+                }
+            }
         }
 
         //Reload
@@ -78,7 +107,6 @@ public class PlayerControls : MonoBehaviour
 
     private void checkForSwipe()
     {
-        gesture_finger1 = Input.GetTouch(0);
         if (gesture_finger1.phase == TouchPhase.Began)
         {
             start_pos = gesture_finger1.position;
@@ -133,6 +161,11 @@ public class PlayerControls : MonoBehaviour
     private void reloadGun()
     {
         gunStatManager.GetComponent<GunStatsManager>().reloadGun();
+    }
+
+    private Vector2 getPrevPoint(Touch t)
+    {
+        return t.position - t.deltaPosition;
     }
 
 
