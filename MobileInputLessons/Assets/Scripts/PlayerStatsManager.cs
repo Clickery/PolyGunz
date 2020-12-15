@@ -10,6 +10,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     public int score = 0;
     public int points = 0;
+    private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     public void AddPoints()
     {
-        points += 100;
+        points += 20;
         pointsText.text = "Points: " + points.ToString();
     }
 
@@ -41,5 +42,19 @@ public class PlayerStatsManager : MonoBehaviour
         {
             Debug.Log("Not Enough Points!");
         }
+    }
+
+    public void IncreaseDamage()
+    {
+        if (points >= 1000)
+        {
+            damage++;
+            Debug.Log(damage);
+        }
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 }

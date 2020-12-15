@@ -3285,8 +3285,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2101804735}
-        m_MethodName: UpgradeYellowGunDamage
+      - m_Target: {fileID: 7606604339652124473}
+        m_MethodName: IncreaseDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7606604339652124473}
+        m_MethodName: BuyUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4857,8 +4868,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2101804735}
-        m_MethodName: UpgradeBlueGunDamage
+      - m_Target: {fileID: 7606604339652124473}
+        m_MethodName: IncreaseDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7606604339652124473}
+        m_MethodName: BuyUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5286,8 +5308,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2101804735}
-        m_MethodName: UpgradeRedGunDamage
+      - m_Target: {fileID: 7606604339652124473}
+        m_MethodName: IncreaseDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7606604339652124473}
+        m_MethodName: BuyUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8141,5 +8174,27 @@ PrefabInstance:
       propertyPath: points
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9152121839337189340, guid: 74fea3c72917061479ac4aca73bcbace,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 662402465}
+    - target: {fileID: 9152121839337189340, guid: 74fea3c72917061479ac4aca73bcbace,
+        type: 3}
+      propertyPath: pointsText
+      value: 
+      objectReference: {fileID: 1238123616}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74fea3c72917061479ac4aca73bcbace, type: 3}
+--- !u!114 &7606604339652124473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9152121839337189340, guid: 74fea3c72917061479ac4aca73bcbace,
+    type: 3}
+  m_PrefabInstance: {fileID: 7606604339652124472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031323380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80403e220673095408c1a69044c3f8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

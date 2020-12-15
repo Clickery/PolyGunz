@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
     public Joystick joystick;
     public Transform crossHair;
     private float sensitivity = 1000.0f;
+    
 
     // Update is called once per frame
     void Update()
@@ -33,7 +34,7 @@ public class PlayerControls : MonoBehaviour
                     Debug.Log("3D Hit: " + enemyHit.collider.name);
                     playerStats.GetComponent<PlayerStatsManager>().AddPoints();
                     playerStats.GetComponent<PlayerStatsManager>().AddScore();
-                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(1);
+                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(playerStats.GetComponent<PlayerStatsManager>().GetDamage());
                 }
             }
         }
