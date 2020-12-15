@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunStatsManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GunStatsManager : MonoBehaviour
     private int bulletCount;
     private int maxAmmo = 5;
 
+    public Text ammoText;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,7 +25,7 @@ public class GunStatsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ammoText.text = "Ammo: " + bulletCount.ToString();
     }
 
     public void gunShot()
