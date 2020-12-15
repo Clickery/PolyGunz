@@ -49,12 +49,6 @@ public class EnemyBehavior : MonoBehaviour
     public void onGetHit()
     {
         //deduct hp for enemy
-<<<<<<< HEAD
-        
-=======
-        //playerStats.GetComponent<PlayerStatsManager>().AddPoints();
-        //playerStats.GetComponent<PlayerStatsManager>().AddScore();
->>>>>>> 11253aca0ae9ad4cec8d6e10628c8e5ea4c6e934
         Destroy(this.gameObject);
     }
 }
