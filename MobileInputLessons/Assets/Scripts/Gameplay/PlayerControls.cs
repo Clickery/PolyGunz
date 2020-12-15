@@ -11,6 +11,7 @@ public class PlayerControls : MonoBehaviour
 
     private GameObject gunStatManager;
 
+
     //Touch purposes/////////////////////
     public SwipeProperty _swipeProperty;
     //finger touch
@@ -19,6 +20,10 @@ public class PlayerControls : MonoBehaviour
     private Vector2 end_pos;
     private float gesture_time;
     //Touch purposes/////////////////////
+
+    //Shake purposes////////////////////
+    private Vector3 phoneAccel;
+    private float reloadTrigger = 4.0f;
 
     public GameObject[] guns;
     private int index;
@@ -40,24 +45,36 @@ public class PlayerControls : MonoBehaviour
         }
 
         gunStatManager = GameObject.FindGameObjectWithTag("GunStatsManager");
-    }
 
+    }
 
     // Update is called once per frame
     private void Update()
     {
+        //aiming
         aimCrossHair();
+
+        //changing gun type
         if (Input.touchCount == 1)
         {
             checkForSwipe();
         }
+
+        //Reload
+        phoneAccel = Input.acceleration;
+        int maxAmmo = gunStatManager.GetComponent<GunStatsManager>().getMaxAmmo();
+        int currentAmmo = gunStatManager.GetComponent<GunStatsManager>().bulletsLeft();
+        if (phoneAccel.sqrMagnitude >= reloadTrigger && currentAmmo < maxAmmo)
+        {
+            reloadGun();
+        }
+
     }
 
     private void aimCrossHair()
     {
         crossHair.position += new Vector3(joystick.Horizontal * sensitivity * Time.deltaTime, joystick.Vertical * sensitivity * Time.deltaTime, 0);
     }
-
 
     private void checkForSwipe()
     {
@@ -112,6 +129,12 @@ public class PlayerControls : MonoBehaviour
             guns[index].SetActive(true);
         }
     }
+
+    private void reloadGun()
+    {
+        gunStatManager.GetComponent<GunStatsManager>().reloadGun();
+    }
+
 
     public void Shoot()
     {

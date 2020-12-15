@@ -41,4 +41,9 @@ public class GunStatsManager : MonoBehaviour
         return bulletCount;
     }
 
+    public int getMaxAmmo()
+    {
+        return maxAmmo;
+    }
+
 }
