@@ -25,11 +25,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb64582be26d9c4e969fef0cdcacbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 7606604338160162764, guid: 74fea3c72917061479ac4aca73bcbace,
-    type: 3}
   finishLine: {fileID: 5896565387794121356, guid: c2884c385d99a08498100a0cea680e06,
     type: 3}
   hpBar: {fileID: 876736417414107811}
+  score: 100
+  gameOverPanel: {fileID: 4426369862293406953, guid: 89ac0111cfe390441b97e1a031bf1d29,
+    type: 3}
 --- !u!114 &4567340448122151602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 9011648103021171507, guid: 8d791e7885d8c11418ff9fcd9552c337,
         type: 3}
       propertyPath: m_Name
-      value: BeholderPolyart Variant
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 9011648103021171507, guid: 8d791e7885d8c11418ff9fcd9552c337,
         type: 3}

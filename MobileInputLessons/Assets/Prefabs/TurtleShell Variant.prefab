@@ -25,11 +25,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb64582be26d9c4e969fef0cdcacbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 7606604338160162764, guid: 74fea3c72917061479ac4aca73bcbace,
-    type: 3}
   finishLine: {fileID: 5896565387794121356, guid: c2884c385d99a08498100a0cea680e06,
     type: 3}
   hpBar: {fileID: 7763201791479620367}
+  score: 100
+  gameOverPanel: {fileID: 4426369862293406953, guid: 89ac0111cfe390441b97e1a031bf1d29,
+    type: 3}
 --- !u!1001 &258229013664388867
 PrefabInstance:
   m_ObjectHideFlags: 0

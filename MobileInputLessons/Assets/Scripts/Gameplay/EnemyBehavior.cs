@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     private int nHp;
     public int score = 100;
 
+    public GameObject gameOverPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class EnemyBehavior : MonoBehaviour
 
         //setting destination point
         targetPos = generateTargetPos();
+
+
     }
 
     // Update is called once per frame
@@ -55,6 +59,7 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
             Debug.Log("This should be dead!");
+            SceneManager.LoadScene(2);
             Destroy(this.gameObject);
         }
     }

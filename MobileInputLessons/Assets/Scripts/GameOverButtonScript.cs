@@ -11,9 +11,9 @@ public class GameOverButtonScript : MonoBehaviour
 
     void Start()
     {
-        gameOverPanel.SetActive(false);
-        playAgainButton.SetActive(false);
-        mainMenuButton.SetActive(false);
+        gameOverPanel.SetActive(true);
+        playAgainButton.SetActive(true);
+        mainMenuButton.SetActive(true);
     }
 
     public void GameOver()
