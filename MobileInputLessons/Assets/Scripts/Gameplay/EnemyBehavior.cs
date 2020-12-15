@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    //public GameObject playerStats;
+
     private float movementSpeedInZ = 1.0f;
     private Vector3 targetPos;
     public Transform finishLine;
@@ -47,7 +49,8 @@ public class EnemyBehavior : MonoBehaviour
     public void onGetHit()
     {
         //deduct hp for enemy
-
+        //playerStats.GetComponent<PlayerStatsManager>().AddPoints();
+        //playerStats.GetComponent<PlayerStatsManager>().AddScore();
         Destroy(this.gameObject);
     }
 }
