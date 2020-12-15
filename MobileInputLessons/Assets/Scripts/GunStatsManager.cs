@@ -19,7 +19,6 @@ public class GunStatsManager : MonoBehaviour
 
     }
 
-
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +32,7 @@ public class GunStatsManager : MonoBehaviour
 
     public void reloadGun()
     {
-        bulletCount = 5;
+        bulletCount = maxAmmo;
     }
 
     public int bulletsLeft()
