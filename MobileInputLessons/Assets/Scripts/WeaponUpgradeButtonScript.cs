@@ -28,23 +28,4 @@ public class WeaponUpgradeButtonScript : MonoBehaviour
             weaponUpgradePanel.SetActive(false);
         }
     }
-
-    public void UpgradeRedGunDamage()
-    {
-        // increase red gun damage IF PLAYER HAS ENOUGH POINTS
-        Debug.Log("UPGRADED RED GUN DAMAGE!");
-    }
-
-    public void UpgradeBlueGunDamage()
-    {
-        // increase blue gun damage IF PLAYER HAS ENOUGH POINTS
-        Debug.Log("UPGRADED BLUE GUN DAMAGE!");
-    }
-
-    public void UpgradeYellowGunDamage()
-    {
-        // increase yellow gun damage IF PLAYER HAS ENOUGH POINTS
-        Debug.Log("UPGRADED YELLOW GUN DAMAGE!");
-    }
-
 }
