@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GunStatsManager : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public AudioSource reloadSFX;
     public GameObject[] guns;
     private GameObject player;
 
@@ -35,6 +35,7 @@ public class GunStatsManager : MonoBehaviour
 
     public void reloadGun()
     {
+        reloadSFX.Play();
         bulletCount = maxAmmo;
     }
 
