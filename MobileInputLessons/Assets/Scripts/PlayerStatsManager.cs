@@ -14,25 +14,20 @@ public class PlayerStatsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Update Text Here
-        scoreText.text = "Score: " + score.ToString();
-        pointsText.text = "Points: " + points.ToString();
+        score = 0;
+        points = 0;
     }
 
     public void AddScore()
     {
         score += 100;
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void AddPoints()
     {
         points += 100;
+        pointsText.text = "Points: " + points.ToString();
     }
 
     public void BuyUpgrade()

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    //public GameObject playerStats;
-
     private float movementSpeedInZ = 1.0f;
     private Vector3 targetPos;
     public Transform finishLine;

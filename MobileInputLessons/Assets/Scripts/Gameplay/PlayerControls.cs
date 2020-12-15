@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
+    public GameObject playerStats;
     public Joystick joystick;
     public Transform crossHair;
     private float sensitivity = 1000.0f;
@@ -30,6 +31,8 @@ public class PlayerControls : MonoBehaviour
                 if (enemyHit.collider.tag == "Enemy")
                 {
                     Debug.Log("3D Hit: " + enemyHit.collider.name);
+                    playerStats.GetComponent<PlayerStatsManager>().AddPoints();
+                    playerStats.GetComponent<PlayerStatsManager>().AddScore();
                     enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(1);
                 }
             }
