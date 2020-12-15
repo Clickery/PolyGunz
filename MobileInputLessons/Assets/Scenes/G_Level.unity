@@ -3444,6 +3444,13 @@ MonoBehaviour:
   playerStats: {fileID: 2031323380}
   joystick: {fileID: 1737133181}
   crossHair: {fileID: 177754521}
+  _swipeProperty:
+    MinSwipeDistance: 0.5
+    MaxGestureTime: 0.7
+  guns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &886849029
 GameObject:
   m_ObjectHideFlags: 0
