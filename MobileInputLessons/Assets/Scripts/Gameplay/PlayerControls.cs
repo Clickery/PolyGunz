@@ -68,7 +68,7 @@ public class PlayerControls : MonoBehaviour
             gesture_finger1 = Input.GetTouch(0);
             checkForSwipe();
         }
-        else if(Input.touchCount > 1)
+        else if(Input.touchCount > 1 && gunStatManager.GetComponent<GunStatsManager>().hasNuke())
         {
             gesture_finger1 = Input.GetTouch(0);
             gesture_finger2 = Input.GetTouch(1);
@@ -85,6 +85,7 @@ public class PlayerControls : MonoBehaviour
                 if(Mathf.Abs(diff) >= _pinchSpread.MinChange * Screen.dpi)
                 {
                     Debug.Log("Pinch/Spread!");
+                    gunStatManager.GetComponent<GunStatsManager>().nukeEnemies();
                 }
             }
         }
