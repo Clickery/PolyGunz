@@ -33,7 +33,7 @@ public class PlayerControls : MonoBehaviour
                     Debug.Log("3D Hit: " + enemyHit.collider.name);
                     playerStats.GetComponent<PlayerStatsManager>().AddPoints();
                     playerStats.GetComponent<PlayerStatsManager>().AddScore();
-                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit();
+                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(1);
                 }
             }
         }
