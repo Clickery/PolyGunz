@@ -49,8 +49,6 @@ public class EnemyBehavior : MonoBehaviour
     public void onGetHit()
     {
         //deduct hp for enemy
-        //playerStats.GetComponent<PlayerStatsManager>().AddPoints();
-        //playerStats.GetComponent<PlayerStatsManager>().AddScore();
         Destroy(this.gameObject);
     }
 }
