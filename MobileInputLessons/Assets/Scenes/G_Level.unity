@@ -7653,7 +7653,7 @@ MonoBehaviour:
     rate: 0.5
   - name: Boss
     enemy: {fileID: 7668659699121165559, guid: 8f60071d92ef52844885601b913fd90c, type: 3}
-    count: 1
+    count: 5
     rate: 0.5
   spawnPoints:
   - {fileID: 989794497}
