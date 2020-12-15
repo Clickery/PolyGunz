@@ -26,7 +26,7 @@ public class PlayerControls : MonoBehaviour
     private void Start()
     {
         index = 0;
-        for(int i = 0; i < (guns.Length); i++)
+        for(int i = 0; i < guns.Length; i++)
         {
             if(i == index)
             {
