@@ -240,5 +240,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyCanvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6174368186025523882, guid: 0fe36a8da1c3f3f4382c941dc67f074b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0fe36a8da1c3f3f4382c941dc67f074b, type: 3}
