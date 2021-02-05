@@ -48,17 +48,6 @@ public class GunStatsManager : MonoBehaviour
         currentGun.mesh.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!nuke)
-        {
-            nukeText.text = "x 0";
-        }
-        ammoText.text = "Ammo: " + currentGun.bullet_Count.ToString();
-        damageText.text = "Damage: " + currentGun.damage.ToString();
-    }
-
     public void gunShot()
     {
         Ray ray = Camera.main.ScreenPointToRay(crossHair.position);
@@ -82,12 +71,16 @@ public class GunStatsManager : MonoBehaviour
         {
             Debug.Log("Out of Ammo");
         }
+        //update ui text
+        ammoText.text = "Ammo: " + currentGun.bullet_Count.ToString();
     }
 
     public void reloadGun()
     {
         reloadSFX.Play();
         currentGun.bullet_Count = currentGun.max_Ammo;
+        //update ui text
+        ammoText.text = "Ammo: " + currentGun.bullet_Count.ToString();
     }
 
     public void nukeEnemies()
@@ -99,6 +92,7 @@ public class GunStatsManager : MonoBehaviour
             Destroy(currentEnemies[i].gameObject);
         }
         nuke = false;
+        nukeText.text = "x 0";
     }
 
 

@@ -3712,7 +3712,7 @@ MonoBehaviour:
   playerStats: {fileID: 7606604339652124473}
   gunStatManager: {fileID: 434746788}
   _swipeProperty:
-    MinSwipeDistance: 1.5
+    MinSwipeDistance: 1.2
     MaxGestureTime: 0.7
   _pinchSpread:
     MinChange: 0.2
