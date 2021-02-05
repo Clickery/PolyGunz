@@ -18,7 +18,6 @@ public class GunStatsManager : MonoBehaviour
     public Gun[] allGuns;
     private Gun currentGun;
     private int currentGunIndex = 0;
-    private int bulletCount;
     private int maxAmmo = 5;
     ///////////////////////
     
@@ -31,16 +30,13 @@ public class GunStatsManager : MonoBehaviour
     public PlayerStatsManager playerStats;
     //public PlayerControls player;
 
-
-    
-
     private bool nuke = true;
 
     public Text ammoText;
+    public Text damageText;
 
     void Start()
     {
-        bulletCount = maxAmmo;
         for(int i = 0; i < allGuns.Length; i++)
         {
             allGuns[i].max_Ammo = maxAmmo;
@@ -60,6 +56,7 @@ public class GunStatsManager : MonoBehaviour
             nukeText.text = "x 0";
         }
         ammoText.text = "Ammo: " + currentGun.bullet_Count.ToString();
+        damageText.text = "Damage: " + currentGun.damage.ToString();
     }
 
     public void gunShot()
@@ -140,7 +137,7 @@ public class GunStatsManager : MonoBehaviour
 
     public int getMaxAmmo()
     {
-        return maxAmmo;
+        return currentGun.max_Ammo;
     }
 
     public Gun GetGun()

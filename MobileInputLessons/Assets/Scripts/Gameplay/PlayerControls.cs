@@ -116,7 +116,7 @@ public class PlayerControls : MonoBehaviour
     private void checkForShake()
     {
         phoneAccel = Input.acceleration;
-        if (phoneAccel.sqrMagnitude >= reloadTrigger && gunStatManager.bulletsLeft() == 0)
+        if (phoneAccel.sqrMagnitude >= reloadTrigger && gunStatManager.bulletsLeft() < gunStatManager.getMaxAmmo())
         {
             Debug.Log("Shake!!");
             fireShakeEvent();

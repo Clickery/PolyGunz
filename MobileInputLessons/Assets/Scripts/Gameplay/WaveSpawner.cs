@@ -27,6 +27,8 @@ public class WaveSpawner : MonoBehaviour
 
     private SpawnState state = SpawnState.COUNTING;
 
+    private float difficulty = 1.0f;
+
     private void Start()
     {
         waveCountDown = timeBetweenWaves;
@@ -96,6 +98,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
+            difficulty += 0.1f;
             nextWave++;
         }
     }
@@ -122,6 +125,15 @@ public class WaveSpawner : MonoBehaviour
     {
         Debug.Log("Spawning Enemy: " + _enemy.name);
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        Transform currentEnemy = Instantiate(_enemy, _sp.position, _sp.rotation);
+        if(currentEnemy.gameObject.GetComponent<EnemyBehavior>() != null)
+        {
+            currentEnemy.gameObject.GetComponent<EnemyBehavior>().increaseStats(difficulty);
+        }
+        else
+        {
+            Debug.LogError("Object does not have 'Enemy Behavior Component'!");
+        }
+        
     }
 }
