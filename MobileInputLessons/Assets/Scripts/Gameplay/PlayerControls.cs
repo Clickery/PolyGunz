@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public GameObject playerStats;
+    
     public Joystick joystick;
-    public Transform crossHair;
-    private float sensitivity = 1000.0f;
+    public RectTransform crossHair;
+    private float sensitivity = 2.0f;
 
-    private GameObject gunStatManager;
-
+    //script references///////////////
+    public PlayerStatsManager playerStats;
+    public GunStatsManager gunStatManager;
+    //////////////////////////////////
 
     private Touch gesture_finger1;
     private Touch gesture_finger2;
@@ -31,79 +33,44 @@ public class PlayerControls : MonoBehaviour
     //Pinch/Spread purposes////////////
     public PinchSpreadProperty _pinchSpread;
 
-
-
-    public GameObject[] guns;
-    private int index;
+    private int index = 0;
 
     private void Start()
     {
-        index = 0;
-
-        for (int i = 0; i < guns.Length; i++)
-        {
-            if(i == index)
-            {
-                guns[i].SetActive(true);
-            }
-            else
-            {
-                guns[i].SetActive(false);
-            }
-        }
-
-        gunStatManager = GameObject.FindGameObjectWithTag("GunStatsManager");
-
+        
     }
 
     // Update is called once per frame
     private void Update()
     {
         //aiming
-        aimCrossHair();
-
-        //changing gun type
-        if (Input.touchCount == 1)
+        if(joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {
+            aimCrossHair();
+        }
+       
+        if (Input.touchCount == 1) //changing gun type
         {
             gesture_finger1 = Input.GetTouch(0);
             checkForSwipe();
         }
-        else if(Input.touchCount > 1 && gunStatManager.GetComponent<GunStatsManager>().hasNuke())
+        else if(Input.touchCount > 1 && gunStatManager.hasNuke())// nuking purposes
         {
             gesture_finger1 = Input.GetTouch(0);
             gesture_finger2 = Input.GetTouch(1);
-
-            if(gesture_finger1.phase == TouchPhase.Moved || gesture_finger2.phase == TouchPhase.Moved)
-            {
-                Vector2 prev1 = getPrevPoint(gesture_finger1);
-                Vector2 prev2 = getPrevPoint(gesture_finger2);
-
-                float currentDist = Vector2.Distance(gesture_finger1.position, gesture_finger2.position);
-                float prevDist = Vector2.Distance(prev1, prev2);
-
-                float diff = currentDist - prevDist;
-                if(Mathf.Abs(diff) >= _pinchSpread.MinChange * Screen.dpi)
-                {
-                    Debug.Log($"Pinch/Spread! {diff}");
-                    gunStatManager.GetComponent<GunStatsManager>().nukeEnemies();
-                }
-            }
+            checheckforPinchSpread();
         }
 
         //Reload
-        phoneAccel = Input.acceleration;
-        int maxAmmo = gunStatManager.GetComponent<GunStatsManager>().getMaxAmmo();
-        int currentAmmo = gunStatManager.GetComponent<GunStatsManager>().bulletsLeft();
-        if (phoneAccel.sqrMagnitude >= reloadTrigger && currentAmmo < maxAmmo)
-        {
-            reloadGun();
-        }
-
+        checkForShake();
     }
 
     private void aimCrossHair()
-    {
-        crossHair.position += new Vector3(joystick.Horizontal * sensitivity * Time.deltaTime, joystick.Vertical * sensitivity * Time.deltaTime, 0);
+    { 
+        
+        crossHair.position += new Vector3(joystick.Horizontal * sensitivity * Screen.dpi * Time.deltaTime, 
+            joystick.Vertical * sensitivity * Screen.dpi * Time.deltaTime, 0);
+       
     }
 
     private void checkForSwipe()
@@ -127,6 +94,35 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    private void checheckforPinchSpread()
+    {
+        if (gesture_finger1.phase == TouchPhase.Moved || gesture_finger2.phase == TouchPhase.Moved)
+        {
+            Vector2 prev1 = getPrevPoint(gesture_finger1);
+            Vector2 prev2 = getPrevPoint(gesture_finger2);
+
+            float currentDist = Vector2.Distance(gesture_finger1.position, gesture_finger2.position);
+            float prevDist = Vector2.Distance(prev1, prev2);
+
+            float diff = currentDist - prevDist;
+            if (Mathf.Abs(diff) >= _pinchSpread.MinChange * Screen.dpi)
+            {
+                Debug.Log($"Pinch/Spread! {diff}");
+                firePinchSpreadEvent();
+            }
+        }
+    }
+
+    private void checkForShake()
+    {
+        phoneAccel = Input.acceleration;
+        if (phoneAccel.sqrMagnitude >= reloadTrigger && gunStatManager.bulletsLeft() == 0)
+        {
+            Debug.Log("Shake!!");
+            fireShakeEvent();
+        }
+    }
+
     private void fireSwipeEvent()
     {
         //Debug.Log("swipe!");
@@ -134,14 +130,12 @@ public class PlayerControls : MonoBehaviour
 
         //swiping left or right
         if (Mathf.Abs(diff.x) > Mathf.Abs(diff.y))
-        {
-
-            guns[index].SetActive(false);
+        {        
             if (diff.x > 0)
             {
                 Debug.Log("swiped right!");
                 index++;
-                if(index > guns.Length - 1)
+                if(index > gunStatManager.getGunCount() - 1)
                 {
                     index = 0;
                 }
@@ -152,16 +146,21 @@ public class PlayerControls : MonoBehaviour
                 index--;
                 if (index < 0)
                 {
-                    index = guns.Length - 1;
+                    index = gunStatManager.getGunCount() - 1;
                 }
             }
-            guns[index].SetActive(true);
+            gunStatManager.changeGun(index);
         }
     }
 
-    private void reloadGun()
+    private void firePinchSpreadEvent()
     {
-        gunStatManager.GetComponent<GunStatsManager>().reloadGun();
+        gunStatManager.nukeEnemies();
+    }
+
+    private void fireShakeEvent()
+    {
+        gunStatManager.reloadGun();
     }
 
     private Vector2 getPrevPoint(Touch t)
@@ -169,31 +168,8 @@ public class PlayerControls : MonoBehaviour
         return t.position - t.deltaPosition;
     }
 
-
     public void Shoot()
     {
-        Ray ray = Camera.main.ScreenPointToRay(crossHair.position);
-        RaycastHit enemyHit;
-
-        int bulletsLeft = gunStatManager.GetComponent<GunStatsManager>().bulletsLeft();
-        if(bulletsLeft > 0)
-        {
-            gunStatManager.GetComponent<GunStatsManager>().gunShot();//reduces ammo
-            if (Physics.Raycast(ray, out enemyHit))
-            {
-                if (enemyHit.collider != null && enemyHit.collider.tag == "Enemy")
-                {
-                    //Debug.Log("3D Hit: " + enemyHit.collider.name);
-                      
-                    playerStats.GetComponent<PlayerStatsManager>().AddPoints();
-                    playerStats.GetComponent<PlayerStatsManager>().AddScore();
-                    enemyHit.collider.gameObject.GetComponent<EnemyBehavior>().onGetHit(playerStats.GetComponent<PlayerStatsManager>().GetDamage());
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("Out of Ammo");
-        }
+        gunStatManager.gunShot();
     }
 }
