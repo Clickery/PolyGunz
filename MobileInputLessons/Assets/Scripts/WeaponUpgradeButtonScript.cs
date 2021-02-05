@@ -18,12 +18,12 @@ public class WeaponUpgradeButtonScript : MonoBehaviour
 
     public void ToggleWeaponUpgradePanel()
     {
-        if (!weaponUpgradePanel.active)
+        if (!weaponUpgradePanel.activeSelf)
         {
             weaponUpgradePanel.SetActive(true);
         }
 
-        else if (weaponUpgradePanel.active)
+        else if (weaponUpgradePanel.activeSelf)
         {
             weaponUpgradePanel.SetActive(false);
         }

@@ -8,34 +8,35 @@ public class EnemyBehavior : MonoBehaviour
     private float movementSpeedInZ = 1.0f;
     private Vector3 targetPos;
     public Transform finishLine;
-
     public HealthBar hpBar;
 
     //enemy stats
-    private int nHp;
-    public int score = 100;
+    private float nHp;
+    //public int score = 100;
 
     public GameObject gameOverPanel;
 
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         //set enemy Hp
-        if(this.gameObject.name == "Boss(Clone)")
+        if (this.gameObject.CompareTag("Boss"))
         {
-            nHp = 20;
+            nHp = 20.0f;
         }
         else
         {
-            nHp = 5;
+            nHp = 5.0f;
         }
-        hpBar.setMaxHealth(nHp);
+
+        int tempHp = (int)nHp;
+        hpBar.setMaxHealth(tempHp);
 
         //setting destination point
         targetPos = generateTargetPos();
-
-
     }
+
 
     // Update is called once per frame
     void Update()
@@ -64,14 +65,24 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    public void increaseStats(float multiplier)
+    {
+        nHp *= multiplier;
+        int tempHp = (int)nHp;
+        hpBar.setHealth(tempHp);
+    }
+
     public void onGetHit(int damage)
     {
         //deduct hp for enemy
 
         nHp -= damage;
-        if(nHp > 0)
+        nHp = Mathf.Round(nHp);
+        Debug.Log(this.name + " has " + nHp + " HP");
+        int tempHp = (int)nHp;
+        if (nHp > 0)
         {
-            hpBar.setHealth(nHp);
+            hpBar.setHealth(tempHp);
         }
         else
         {

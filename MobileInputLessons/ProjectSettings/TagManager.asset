@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - GunStatsManager
+  - Red
+  - Yellow
+  - Blue
+  - Boss
   layers:
   - Default
   - TransparentFX

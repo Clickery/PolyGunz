@@ -28,7 +28,6 @@ MonoBehaviour:
   finishLine: {fileID: 5896565387794121356, guid: c2884c385d99a08498100a0cea680e06,
     type: 3}
   hpBar: {fileID: 7763201791479620367}
-  score: 100
   gameOverPanel: {fileID: 4426369862293406953, guid: 89ac0111cfe390441b97e1a031bf1d29,
     type: 3}
 --- !u!1001 &258229013664388867
@@ -188,6 +187,10 @@ PrefabInstance:
     - target: {fileID: 1837317425425208, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
       propertyPath: m_Name
       value: TurtleShell Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837317425425208, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
+      propertyPath: m_TagString
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 4882590064214274, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
       propertyPath: m_LocalPosition.x
