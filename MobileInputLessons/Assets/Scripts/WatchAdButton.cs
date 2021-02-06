@@ -48,7 +48,7 @@ public class WatchAdButton : MonoBehaviour
 
     private void AdManager_OnAdDone(object sender, OnAdDoneEventArgs e)
     {
-        
+        Debug.Log("isa kang BONAK!");
         if (e.PlacementID == MyAdManager.SampleRewarded)
         {
             switch (e.AdShowResult)

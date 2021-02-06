@@ -87,7 +87,7 @@ public class MyAdManager : MonoBehaviour, IUnityAdsListener
        
         if (OnAdDone != null)
         {
-            Debug.Log("isa kang BONAK!");
+            
             OnAdDoneEventArgs args = new OnAdDoneEventArgs(placementId, showResult);
             OnAdDone(this, args);
         }
