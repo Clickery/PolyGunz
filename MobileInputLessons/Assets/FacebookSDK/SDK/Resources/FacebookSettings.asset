@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 166332085042499
   appLabels:
-  - App Name
+  - PolyGunz
   cookie: 1
   logging: 1
   status: 1

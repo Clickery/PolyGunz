@@ -66,6 +66,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 waveCountDown -= Time.deltaTime;
             }
+            Debug.Log(currWave);
         }
     }
 
@@ -102,8 +103,8 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             difficulty += 0.1f;
-            currWave++;
             nextWave++;
+            currWave++;
             waveCount.text = "Wave: " + currWave;
         }
     }

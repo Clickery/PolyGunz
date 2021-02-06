@@ -71,11 +71,19 @@ public class PersistentData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if (player == null || spawner == null)
+        {
+            player = GameObject.FindObjectOfType<PlayerStatsManager>();
+            spawner = GameObject.FindObjectOfType<WaveSpawner>();
+        }
+
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             playerScore = player.getCurrentScore();
             waveCount = spawner.getCurrentWave();
-            //Debug.Log(playerScore + ", " + waveCount);
+            
         }
+        Debug.Log(playerScore + ", " + waveCount);
     }
 }
