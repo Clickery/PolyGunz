@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 3401119556
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b215882e4c0d2e1b543c0986533a231e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c3766c7413785d2a351e310d9908b8b2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: e8f9b06457d11e841b9ade2f63df3f50, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/StageEnvironment.prefab
+Dependencies: []

@@ -32,6 +32,12 @@ public class PlayerStatsManager : MonoBehaviour
     }
 
 
+    public int getCurrentScore()
+    {
+        return score;
+    }
+
+
     public void IncreaseDamage(int index)
     {
         Debug.Log("UPGRADE!!");
@@ -45,5 +51,11 @@ public class PlayerStatsManager : MonoBehaviour
         {
             Debug.Log("Not Enough Points!");
         }
+    }
+
+    public void addReward()
+    {
+        points += 1000;
+        pointsText.text = "Points: " + points.ToString();
     }
 }

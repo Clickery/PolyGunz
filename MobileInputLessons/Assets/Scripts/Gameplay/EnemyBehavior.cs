@@ -7,15 +7,21 @@ public class EnemyBehavior : MonoBehaviour
 {
     private float movementSpeedInZ = 1.0f;
     private Vector3 targetPos;
-    public Transform finishLine;
+    private Transform finishLine;
     public HealthBar hpBar;
 
+   
     //enemy stats
     private float nHp;
     //public int score = 100;
 
     public GameObject gameOverPanel;
 
+    //anim purposes
+    private Animator animator;
+    private float timeDelay = 0.1f;
+    private float tick = 0.0f;
+    private float deathTimer = 0.0f;
     // Start is called before the first frame update
 
     private void Awake()
@@ -35,17 +41,46 @@ public class EnemyBehavior : MonoBehaviour
 
         //setting destination point
         targetPos = generateTargetPos();
+        finishLine = BundleManager.instance.GetAsset<GameObject>("objects", "FinishLine").transform;
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        moveForward();
+        if(!PersistentData.instance.isGamePaused())
+        {
+            tick += Time.deltaTime;
+            if (tick >= timeDelay)
+            {
+                tick = 0.0f;
+                if (!animator.GetBool("isDead"))
+                {
+                    animator.SetBool("isHit", false);
+                }
+            }
+
+            if (animator.GetBool("isDead"))
+            {
+                deathTimer += Time.deltaTime;
+                if (deathTimer >= 1.5f)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                moveForward();
+            }
+
+        }
     }
 
     private Vector3 generateTargetPos()
     {
+        finishLine = BundleManager.instance.GetAsset<GameObject>("objects", "FinishLine").transform;
         float x = Random.Range(-1.5f, 1.5f);
         return new Vector3(x, finishLine.position.y, finishLine.position.z);
     }
@@ -75,18 +110,20 @@ public class EnemyBehavior : MonoBehaviour
     public void onGetHit(int damage)
     {
         //deduct hp for enemy
-
+        
         nHp -= damage;
         nHp = Mathf.Round(nHp);
         Debug.Log(this.name + " has " + nHp + " HP");
         int tempHp = (int)nHp;
+        hpBar.setHealth(tempHp);
         if (nHp > 0)
         {
-            hpBar.setHealth(tempHp);
+            animator.SetBool("isHit", true);
         }
         else
         {
-            Destroy(this.gameObject);
+            animator.SetBool("isDead", true);
+            Destroy(gameObject.GetComponent<Collider>());
         }
         
     }

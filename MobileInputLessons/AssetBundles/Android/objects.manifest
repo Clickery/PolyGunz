@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 4015254644
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: be7d12c59b99744fb8466c50a2d3645f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bb28e223b524cc6b7637a7337cb8f8b5
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/Handgun_Blue Variant.prefab
+- Assets/Prefabs/Handgun_Yellow Variant.prefab
+- Assets/Prefabs/Handgun_Red Variant.prefab
+- Assets/Prefabs/FinishLine.prefab
+Dependencies: []
