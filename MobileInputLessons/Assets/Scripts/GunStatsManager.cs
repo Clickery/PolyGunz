@@ -37,7 +37,11 @@ public class GunStatsManager : MonoBehaviour
 
     void Start()
     {
-        for(int i = 0; i < allGuns.Length; i++)
+        allGuns[0].mesh = GameObject.Find("Handgun_Red Variant(Clone)");
+        allGuns[1].mesh = GameObject.Find("Handgun_Blue Variant(Clone)");
+        allGuns[2].mesh = GameObject.Find("Handgun_Yellow Variant(Clone)");
+
+        for (int i = 0; i < allGuns.Length; i++)
         {
             allGuns[i].max_Ammo = maxAmmo;
             allGuns[i].bullet_Count = allGuns[i].max_Ammo;
@@ -89,7 +93,7 @@ public class GunStatsManager : MonoBehaviour
         EnemyBehavior[] currentEnemies = GameObject.FindObjectsOfType<EnemyBehavior>();
         for(int i = 0; i < currentEnemies.Length; i++)
         {
-            Destroy(currentEnemies[i].gameObject);
+            currentEnemies[i].gameObject.GetComponent<Animator>().SetBool("isDead", true);
         }
         nuke = false;
         nukeText.text = "x 0";
@@ -107,6 +111,8 @@ public class GunStatsManager : MonoBehaviour
             currentGun = allGuns[index];
             currentGun.mesh.SetActive(true);
         }
+        ammoText.text = "Ammo: " + currentGun.bullet_Count.ToString();
+        damageText.text = "Damage: " + currentGun.damage.ToString();
     }
 
     public void upgradeWeapon(int index)

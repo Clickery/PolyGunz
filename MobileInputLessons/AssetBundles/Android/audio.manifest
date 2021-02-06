@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 2412583766
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0a0593ba4bfc174de7d430ab8cb87d73
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Imported/Audio/sawsquarenoise stage3.wav
+- Assets/Imported/Audio/sawsquarenoise stage1.wav
+- Assets/Imported/Audio/sawsquarenoise stage2.wav
+Dependencies: []

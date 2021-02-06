@@ -1,0 +1,13 @@
+ManifestFileVersion: 0
+CRC: 3138430006
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: environment
+      Dependencies: {}
+    Info_1:
+      Name: audio
+      Dependencies: {}
+    Info_2:
+      Name: objects
+      Dependencies: {}

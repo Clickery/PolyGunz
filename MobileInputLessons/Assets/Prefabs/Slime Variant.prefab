@@ -25,8 +25,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb64582be26d9c4e969fef0cdcacbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLine: {fileID: 5896565387794121356, guid: c2884c385d99a08498100a0cea680e06,
-    type: 3}
   hpBar: {fileID: 3115185576166499217}
   gameOverPanel: {fileID: 4426369862293406953, guid: 89ac0111cfe390441b97e1a031bf1d29,
     type: 3}
@@ -237,6 +235,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95471671811264702, guid: a817c29ea6847604bb2c6c51d9a74bf1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ff8c116024d1a9f47b618dbf2cf3c0ac, type: 2}
     m_RemovedComponents:
     - {fileID: -2868429181609702135, guid: a817c29ea6847604bb2c6c51d9a74bf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a817c29ea6847604bb2c6c51d9a74bf1, type: 3}

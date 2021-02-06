@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class WaveSpawner : MonoBehaviour
 {
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
@@ -29,6 +29,8 @@ public class WaveSpawner : MonoBehaviour
 
     private float difficulty = 1.0f;
 
+    public Text waveCount;
+    private int currWave = 1;
     private void Start()
     {
         waveCountDown = timeBetweenWaves;
@@ -36,34 +38,35 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-
-        if(state == SpawnState.WAITING)
+        if(!PersistentData.instance.isGamePaused())
         {
-            if(isWaveCleared())
+            if (state == SpawnState.WAITING)
             {
-                //wave cleared, start new wave
-                waveCompleted();
-                return;
+                if (isWaveCleared())
+                {
+                    //wave cleared, start new wave
+                    waveCompleted();
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (waveCountDown <= 0)
+            {
+                if (state != SpawnState.SPAWNING)
+                {
+                    //start spawning here
+                    StartCoroutine(SpawnWave(waves[nextWave]));
+                }
             }
             else
             {
-                return;
+                waveCountDown -= Time.deltaTime;
             }
         }
-
-        if (waveCountDown <= 0)
-        {
-            if (state != SpawnState.SPAWNING)
-            {
-                //start spawning here
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            }
-        }
-        else
-        {
-            waveCountDown -= Time.deltaTime;
-        }
-        
     }
 
     bool isWaveCleared()
@@ -99,7 +102,9 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             difficulty += 0.1f;
+            currWave++;
             nextWave++;
+            waveCount.text = "Wave: " + currWave;
         }
     }
 
@@ -113,6 +118,10 @@ public class WaveSpawner : MonoBehaviour
         //spawn
         for (int i = 0; i < _wave.count; i++)
         {
+            while (PersistentData.instance.isGamePaused())
+            {
+                yield return null;
+            }
             spawnEnemy(_wave.enemy);
             yield return new WaitForSeconds(1f/_wave.rate);
         }
@@ -134,6 +143,10 @@ public class WaveSpawner : MonoBehaviour
         {
             Debug.LogError("Object does not have 'Enemy Behavior Component'!");
         }
-        
+    }
+
+    public int getCurrentWave()
+    {
+        return currWave;
     }
 }

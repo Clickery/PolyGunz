@@ -38,8 +38,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb64582be26d9c4e969fef0cdcacbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLine: {fileID: 5896565387794121356, guid: c2884c385d99a08498100a0cea680e06,
-    type: 3}
   hpBar: {fileID: 876736417414107811}
   gameOverPanel: {fileID: 4426369862293406953, guid: 89ac0111cfe390441b97e1a031bf1d29,
     type: 3}
@@ -130,6 +128,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 9011648103030661363, guid: 8d791e7885d8c11418ff9fcd9552c337,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3dee9b1b19c0f084abff0f218ca8a565, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d791e7885d8c11418ff9fcd9552c337, type: 3}
 --- !u!1 &7668659699121588439 stripped

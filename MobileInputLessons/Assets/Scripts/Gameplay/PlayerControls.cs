@@ -43,26 +43,29 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //aiming
-        if(joystick.Horizontal != 0 || joystick.Vertical != 0)
+        if(!PersistentData.instance.isGamePaused())
         {
-            aimCrossHair();
-        }
-       
-        if (Input.touchCount == 1) //changing gun type
-        {
-            gesture_finger1 = Input.GetTouch(0);
-            checkForSwipe();
-        }
-        else if(Input.touchCount > 1 && gunStatManager.hasNuke())// nuking purposes
-        {
-            gesture_finger1 = Input.GetTouch(0);
-            gesture_finger2 = Input.GetTouch(1);
-            checheckforPinchSpread();
-        }
+            //aiming
+            if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+            {
+                aimCrossHair();
+            }
 
-        //Reload
-        checkForShake();
+            if (Input.touchCount == 1) //changing gun type
+            {
+                gesture_finger1 = Input.GetTouch(0);
+                checkForSwipe();
+            }
+            else if (Input.touchCount > 1 && gunStatManager.hasNuke())// nuking purposes
+            {
+                gesture_finger1 = Input.GetTouch(0);
+                gesture_finger2 = Input.GetTouch(1);
+                checheckforPinchSpread();
+            }
+
+            //Reload
+            checkForShake();
+        }
     }
 
     private void aimCrossHair()
