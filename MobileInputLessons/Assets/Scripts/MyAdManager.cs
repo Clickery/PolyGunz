@@ -30,7 +30,7 @@ public class MyAdManager : MonoBehaviour, IUnityAdsListener
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         Advertisement.AddListener(this);
         Advertisement.Initialize(GameID, Test);
 
@@ -80,6 +80,7 @@ public class MyAdManager : MonoBehaviour, IUnityAdsListener
     public void OnUnityAdsDidStart(string placementId)
     {
         Debug.Log($"{placementId} is playing");
+        PersistentData.instance.pauseGame();
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)

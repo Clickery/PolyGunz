@@ -16,11 +16,12 @@ public class WatchAdButton : MonoBehaviour
 
 
 
-
     // Start is called before the first frame update
     void Start()
     {
-        if(PersistentData.instance.isBannerAd())
+        adManager.OnAdDone += AdManager_OnAdDone;
+
+        if (PersistentData.instance.isBannerAd())
         {
             adPanel.SetActive(true);
         }
@@ -33,8 +34,8 @@ public class WatchAdButton : MonoBehaviour
 
     public void onClickWatchAd()
     {
-        adManager.ShowRewardedAd();
-        /*if(Application.internetReachability != NetworkReachability.NotReachable)
+        //adManager.ShowRewardedAd();
+        if(Application.internetReachability != NetworkReachability.NotReachable)
         {
             adManager.ShowRewardedAd();
         }
@@ -42,7 +43,7 @@ public class WatchAdButton : MonoBehaviour
         {
             errorPanel.SetActive(true);
             PersistentData.instance.pauseGame();
-        }*/
+        }
 
     }
 
@@ -54,11 +55,11 @@ public class WatchAdButton : MonoBehaviour
             {
                 case ShowResult.Failed:
                     Debug.Log("Ad failed play");
-                    showErrorText("Ad failed play");
+                    //showErrorText("Ad failed play");
                     break;
                 case ShowResult.Skipped: 
                     Debug.Log("Ad was skipped");
-                    showErrorText("Ad was skipped");
+                    //showErrorText("Ad was skipped");
                     break;
                 case ShowResult.Finished:
                     //add points here
@@ -79,7 +80,11 @@ public class WatchAdButton : MonoBehaviour
     private void showErrorText(string message)
     {
         errorText.text = message;
-        errorPanel.SetActive(true);
+        if (errorPanel != null)
+        {
+            errorPanel.SetActive(true);
+        }
+
         PersistentData.instance.pauseGame();
     }
 

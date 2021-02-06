@@ -37,7 +37,9 @@ public class PlayerControls : MonoBehaviour
 
     private void Start()
     {
-        
+        Debug.Log(_swipeProperty.MaxGestureTime);
+
+        Debug.Log(_swipeProperty.MinSwipeDistance);
     }
 
     // Update is called once per frame
@@ -65,6 +67,11 @@ public class PlayerControls : MonoBehaviour
 
             //Reload
             checkForShake();
+        }
+
+        else
+        {
+            gesture_time = 1.0f;
         }
     }
 

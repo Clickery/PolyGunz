@@ -118,6 +118,7 @@ public class GunStatsManager : MonoBehaviour
     public void upgradeWeapon(int index)
     {
         allGuns[index].damage += 1;
+        damageText.text = "Damage: " + currentGun.damage.ToString();
     }
 
     public int getGunCount()
